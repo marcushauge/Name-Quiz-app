@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Name Quiz app</string>
+    <string name="database_btn">Database</string>
+    <string name="quiz_btn">Quiz</string>
+    <string name="add_btn">Add</string>
+    <string name="circle_entry">Circle</string>
+    <string name="triangle_entry">Triangle</string>
+    <string name="square_entry">Square</string>
+    <string name="delete_entry_btn">Remove entry</string>
+    <string name="quiz_score">Score:</string>
+</resources>
