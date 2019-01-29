@@ -29,9 +29,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var e1 = Entry(resources.getString(R.string.circle_entry), bitmapToByteArray(BitmapFactory.decodeResource(resources, R.drawable.circle)))
-        var e2 = Entry(resources.getString(R.string.square_entry), bitmapToByteArray(BitmapFactory.decodeResource(resources, R.drawable.square)))
-        var e3 = Entry(resources.getString(R.string.triangle_entry), bitmapToByteArray(BitmapFactory.decodeResource(resources, R.drawable.triangle)))
+        var e1 = Entry(resources.getString(R.string.circle_entry), Entry.bitmapToByteArray(BitmapFactory.decodeResource(resources, R.drawable.circle)))
+        var e2 = Entry(resources.getString(R.string.square_entry), Entry.bitmapToByteArray(BitmapFactory.decodeResource(resources, R.drawable.square)))
+        var e3 = Entry(resources.getString(R.string.triangle_entry), Entry.bitmapToByteArray(BitmapFactory.decodeResource(resources, R.drawable.triangle)))
 
         entryList.add(e1)
         entryList.add(e2)
@@ -85,22 +85,6 @@ class MainActivity : AppCompatActivity() {
         val ename = applicationContext.resources.getResourceEntryName(resid)
 
         return Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + pack + '/' + type + '/' + ename)
-    }
-
-    private fun bitmapToByteArray(bm: Bitmap) : ByteArray
-    {
-        val stream = ByteArrayOutputStream()
-        bm.compress(Bitmap.CompressFormat.PNG, 100, stream)
-        val imageBytes = stream.toByteArray()
-        return imageBytes
-    }
-
-    private fun byteArrayToBitmap(ba: ByteArray) : Bitmap
-    {
-        val inputStream = ByteArrayInputStream(ba)
-        val o = BitmapFactory.Options()
-        val bm = BitmapFactory.decodeStream(inputStream, null, o)
-        return bm
     }
 
 

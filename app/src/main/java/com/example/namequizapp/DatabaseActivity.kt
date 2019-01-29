@@ -46,7 +46,7 @@ class DatabaseActivity : AppCompatActivity() {
 
             //Image
             var iv: ImageView = ImageView(this)
-            iv.setImageBitmap(byteArrayToBitmap(entry.bitmapByteArray))
+            iv.setImageBitmap(Entry.byteArrayToBitmap(entry.bitmapByteArray))
             linearHorizontal.addView(iv)
 
             //Name next to image
@@ -99,10 +99,8 @@ class DatabaseActivity : AppCompatActivity() {
                                 break
                             }
                         }
-
                         break
                     }
-
 
                 }
 
@@ -125,23 +123,6 @@ class DatabaseActivity : AppCompatActivity() {
         returnIntent.putExtra(EXTRA_MESSAGE, entryList)
         setResult(Activity.RESULT_OK, returnIntent)
         finish()
-    }
-
-    private fun bitmapToByteArray(bm: Bitmap) : ByteArray
-    {
-        val stream = ByteArrayOutputStream()
-        bm.compress(Bitmap.CompressFormat.PNG, 100, stream)
-        val imageBytes = stream.toByteArray()
-        return imageBytes
-    }
-
-    private fun byteArrayToBitmap(ba: ByteArray) : Bitmap
-    {
-        val inputStream = ByteArrayInputStream(ba)
-        val o = BitmapFactory.Options()
-        val bm = BitmapFactory.decodeStream(inputStream, null, o)
-        inputStream.close()
-        return bm
     }
 
 

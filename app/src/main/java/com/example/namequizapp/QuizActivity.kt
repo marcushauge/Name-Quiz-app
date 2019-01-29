@@ -33,7 +33,7 @@ class QuizActivity : AppCompatActivity() {
         //set random start picture
         var imageView = findViewById<ImageView>(R.id.imageView)
         var number = Random().nextInt(entryList.size)
-        imageView.setImageBitmap(byteArrayToBitmap(entryList[number].bitmapByteArray))
+        imageView.setImageBitmap(Entry.byteArrayToBitmap(entryList[number].bitmapByteArray))
         usedIndexes.add(number)
         activeEntry = entryList[number]
 
@@ -71,26 +71,11 @@ class QuizActivity : AppCompatActivity() {
         }
 
         //Next quiz question
-        imageView.setImageBitmap(byteArrayToBitmap(entryList[number].bitmapByteArray))
+        imageView.setImageBitmap(Entry.byteArrayToBitmap(entryList[number].bitmapByteArray))
         usedIndexes.add(number)
         activeEntry = entryList[number]
 
     }
 
-    private fun bitmapToByteArray(bm: Bitmap) : ByteArray
-    {
-        val stream = ByteArrayOutputStream()
-        bm.compress(Bitmap.CompressFormat.PNG, 100, stream)
-        val imageBytes = stream.toByteArray()
-        return imageBytes
-    }
-
-    private fun byteArrayToBitmap(ba: ByteArray) : Bitmap
-    {
-        val inputStream = ByteArrayInputStream(ba)
-        val o = BitmapFactory.Options()
-        val bm = BitmapFactory.decodeStream(inputStream, null, o)
-        return bm
-    }
 
 }

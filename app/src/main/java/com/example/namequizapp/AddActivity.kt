@@ -51,7 +51,7 @@ class AddActivity : AppCompatActivity() {
         if(bitmap != null)
         {
             val name = findViewById<EditText>(R.id.editText).text.toString()
-            var newEntry = Entry(name, bitmapToByteArray(bitmap))
+            var newEntry = Entry(name, Entry.bitmapToByteArray(bitmap))
             entryList.add(newEntry)
         }
         else
@@ -67,22 +67,6 @@ class AddActivity : AppCompatActivity() {
         returnIntent.putExtra(AlarmClock.EXTRA_MESSAGE, entryList)
         setResult(Activity.RESULT_OK, returnIntent)
         finish()
-    }
-
-    private fun bitmapToByteArray(bm: Bitmap) : ByteArray
-    {
-        val stream = ByteArrayOutputStream()
-        bm.compress(Bitmap.CompressFormat.PNG, 100, stream)
-        val imageBytes = stream.toByteArray()
-        return imageBytes
-    }
-
-    private fun byteArrayToBitmap(ba: ByteArray) : Bitmap
-    {
-        val inputStream = ByteArrayInputStream(ba)
-        val o = BitmapFactory.Options()
-        val bm = BitmapFactory.decodeStream(inputStream, null, o)
-        return bm
     }
 
 }
